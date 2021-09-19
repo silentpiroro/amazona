@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export const generateToken = (user)=>{
-    return jwt.signin({
+    return jwt.sign({
         _id: user._id,
         name: user.name,
         email: user.email,
@@ -29,5 +29,13 @@ export const isAuth = (req, res, next) =>{
         );
     }else{
         res.status(401).send({message: 'No Token'});
+    }
+};
+
+export const isAdmin = (req, res, next) => {
+    if(req.user && req.user.isAdmin) {
+        next();
+    } else {
+        res.status(401).send({message: 'Invalid Admin Token'});
     }
 };

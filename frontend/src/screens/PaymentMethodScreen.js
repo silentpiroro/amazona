@@ -9,7 +9,7 @@ export default function PaymentMethodScreen(props) {
     if (!shippingAddress.address){
         props.history.push('/shipping')
     }
-   const [paymentMethod, setPaymentMethod] = useState('Paynow');
+   const [paymentMethod, setPaymentMethod] = useState('Paypal');
    const dispatch = useDispatch();
    const submitHandler = (e) => {
        e.preventDefault();
@@ -18,7 +18,7 @@ export default function PaymentMethodScreen(props) {
    };
   return (
     <div>
-    <CheckoutSteps> step1 step2 step3</CheckoutSteps>
+    <CheckoutSteps step1 step2 step3></CheckoutSteps>
     <form className="form" onSubmit={submitHandler}>
         <div>
             <h1> Payment Method </h1>
@@ -30,7 +30,7 @@ export default function PaymentMethodScreen(props) {
                 id="paypal" 
                 value="PayPal" 
                 name="paymentMethod"
-                required 
+                required checked
                 onChange={(e)=> setPaymentMethod(e.target.value)}
                 ></input>
                 <label htmlFor="paypal">PayPal</label>
@@ -58,7 +58,7 @@ export default function PaymentMethodScreen(props) {
                 id="paynow" 
                 value="Paynow" 
                 name="paymentMethod"
-                required checked 
+                required 
                 onChange={(e)=> setPaymentMethod(e.target.value)}
                 ></input>
                 <label htmlFor="paynow">Paynow</label>
