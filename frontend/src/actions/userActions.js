@@ -90,4 +90,4 @@ export const updateUserProfile = (user) => async(dispatch, getState) => {
         : error.message;
         dispatch({type: USER_UPDATE_PROFILE_FAIL, payload: message})
     }
-}
+};
